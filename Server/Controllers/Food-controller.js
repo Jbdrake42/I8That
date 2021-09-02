@@ -3,7 +3,7 @@ let router = express.Router();
 const Food = require('../Db').import('../Models/Food');
 let validateSession = require("../Middleware/Validate-session");
 
-router.post("/", validateSession, (req, res) => {
+router.post("/create", validateSession, (req, res) => {
     const foodEntry = {
         food: req.body.food.food,
         location: req.body.food.location,
@@ -19,7 +19,7 @@ router.post("/", validateSession, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.get("/", validateSession, (req, res) => {
+router.get("/get", validateSession, (req, res) => {
     let ownerId = req.user.id
     Food.findAll({
         where: { owner_id: ownerId }
@@ -28,7 +28,7 @@ router.get("/", validateSession, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.get("/:id", validateSession, (req, res) => {
+router.get("/get/:id", validateSession, (req, res) => {
     Food.findAll({
         where: { id: req.params.id, owner_id: req.user.id }
     })
@@ -36,7 +36,7 @@ router.get("/:id", validateSession, (req, res) => {
     .catch(err => res.status(500).json({ error: err }))
     });
 
-router.put("/:id", validateSession, function (req, res) {
+router.put("/update/:id", validateSession, function (req, res) {
     const updateFoodEntry = {
         food: req.body.food.food,
         location: req.body.food.location,
@@ -54,7 +54,7 @@ router.put("/:id", validateSession, function (req, res) {
         .catch((err) => res.status(500).json({ error: err }));
     });
 
-router.delete("/:id", validateSession, function (req, res) {
+router.delete("/delete/:id", validateSession, function (req, res) {
     const query = { where: { id: req.params.id, owner_id: req.user.id }};
 
     Food.destroy(query)
