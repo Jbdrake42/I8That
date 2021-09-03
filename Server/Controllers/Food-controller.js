@@ -28,7 +28,7 @@ router.get("/get", validateSession, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.get("/get/all", (req,res) => {
+router.get("/get/all", (res) => {
     Food.findAll()
         .then(foods => res.status(200).json(foods))
         .catch(err => res.status(500).json({ error: err }))
