@@ -1,7 +1,10 @@
+
 require('dotenv').config();
+
 let express = require('express');
 let app = express();
 let sequelize = require('./Db');
+
 
 let food = require('./Controllers/Food-controller');
 let user = require('./Controllers/User-controller');
