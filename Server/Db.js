@@ -6,7 +6,7 @@ const sequelize = new Sequelize('I8That', 'postgres', 'password', {
 
 sequelize.authenticate().then(
     function() {
-        console.log('Connected to journal-walkthrough postgres database');
+        console.log('Connected to I8That postgres database');
     },
     function(err) {
         console.log(err);
