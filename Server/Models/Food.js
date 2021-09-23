@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         emoji: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: true
         },
         feelings: {
             type: DataTypes.STRING,
