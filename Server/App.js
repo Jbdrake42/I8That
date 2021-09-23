@@ -22,7 +22,7 @@ app.use('/user', user);
 
 app.use(require('./Middleware/Validate-session'));
 
-app.listen(3000, function () {
-  console.log('App is listening on port 3000');
+app.listen(process.env.PORT, function () {
+  console.log(`App is listening on port ${process.env.PORT}`);
 });
 app.use(cors({ origin: 'http://localhost:3001' }));
